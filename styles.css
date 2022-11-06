@@ -1,0 +1,238 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'M PLUS Code Latin', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  background-color: #222222;
+}
+
+header {
+  flex: 1;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+}
+
+#game {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#config {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+#config fieldset {
+  border: none;
+  color: #cccccc;
+}
+#config label {
+  margin-right: 1rem;
+}
+
+#characters {
+  flex: 6;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.expbar {
+  width: 100%;
+  height: 1rem;
+  border: 2px solid #cccccc;
+  border-radius: 0.1rem;
+  margin: 1rem 0;
+  background: #777777;
+  overflow: hidden;
+}
+
+.expbar__value {
+  background-color: #3997dc;
+  width: 100%;
+  height: 100%;
+}
+
+.healthbar {
+  width: 100%;
+  height: 2.6rem;
+  border: 2px solid #cccccc;
+  border-radius: 2rem;
+  margin: 1rem 0;
+  background: #d54c4c;
+  overflow: hidden;
+}
+
+.healthbar__value {
+  background-color: #00a876;
+  width: 100%;
+  height: 100%;
+}
+
+.infos {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+#monster,
+#player {
+  width: 90%;
+  max-width: 45rem;
+  color: #cccccc;
+}
+
+#monster img,
+#player img {
+  width: 7rem;
+  height: 7rem;
+  margin-top: 1rem;
+}
+
+#fight-over {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background-color: #222222;
+}
+#fight-over div {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #cccccc;
+  color: #222222;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+}
+#fight-over div h2 {
+  margin-bottom: 1rem;
+}
+#fight-over div span {
+  margin: 0.4rem auto;
+}
+#fight-over div img {
+  width: 150px;
+  height: 150px;
+}
+
+#controls {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  border: 1px solid #1f7298;
+  background-color: #1f7298;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  margin: 1rem;
+  cursor: pointer;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover,
+button:active {
+  background-color: #14485e;
+  border-color: #14485e;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
+}
+
+button:disabled {
+  background-color: #ccc;
+  border-color: #ccc;
+  box-shadow: none;
+  color: #3f3f3f;
+  cursor: not-allowed;
+}
+
+button .remaining-count {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50%;
+  background-color: #222222;
+}
+
+button img {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 0.4rem;
+}
+
+#log {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #494949;
+  color: #cccccc;
+}
+
+#log ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#log li {
+  margin: 0.5rem 0;
+}
+
+.log--player {
+  color: #7700ff;
+}
+
+.log--monster {
+  color: #da8d00;
+}
+
+.log--damage {
+  color: red;
+}
+
+.log--heal {
+  color: green;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Monster Slayer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+<header>
+    <h1>Monster Slayer</h1>
+</header>
+
+<div id="game">
+    <section id="config">
+        <fieldset>
+            <label>Your name</label>
+            <input type="text" v-model="player.name">
+        </fieldset>
+        <fieldset>
+            <label>Your character</label>
+            <select v-model="player.characterNb" name="character" id="character-select">
+                <option value="0">Knight ♂</option>
+                <option value="1">Knight ♀</option>
+                <option value="2">Archer ♂</option>
+                <option value="3">Archer ♀</option>
+                <option value="4">Magician ♂</option>
+                <option value="5">Magician ♀</option>
+            </select>
+        </fieldset>
+    </section>
+    <section id="characters">
+        <div id="monster" class="container">
+            <img :src="getMonster.avatar" alt="monster avatar">
+            <span>{{ getMonster.name }}</span>
+            <div class="healthbar">
+                <div class="healthbar__value" :style="monsterHealthBarStyles"></div>
+            </div>
+            <div class="infos">
+                <span>Level {{ monster.level }}</span>
+                <span>{{ monsterHealth }} / {{ monsterMaxHealth }}</span>
+            </div>
+        </div>
+        <div id="player" class="container">
+            <img :src="characters[player.characterNb].avatar" :alt="characters[player.characterNb].avatarAlt">
+            <span>{{ player.name }}</span>
+            <div class="expbar">
+                <div class="expbar__value" :style="playerExpBarStyles"></div>
+            </div>
+            <div class="infos">
+                <span>Exp. {{ player.exp }}</span>
+                <span>100</span>
+            </div>
+            <div class="healthbar">
+                <div class="healthbar__value" :style="playerHealthBarStyles"></div>
+            </div>
+            <div class="infos">
+                <span>Level {{ player.level }}</span>
+                <span>{{ playerHealth }} / {{ playerMaxHealth }}</span>
+            </div>
+        </div>
+    </section>
+    <section id="fight-over" v-if="winner">
+        <div v-if="winner === 'monster'">
+            <h2>Game Over!</h2>
+            <span>Monster won, you're dead...</span>
+            <span>You can continue to play but you will come back to level 1.</span>
+            <button @click="reset">Try Again</button>
+        </div>
+        <div v-if="winner === 'surrender'">
+            <h2>You surrendered!</h2>
+            <img src="./assets/peace.png" alt="surrender flag" />
+            <button @click="reset">Try Again</button>
+        </div>
+        <div v-else-if="winner === 'draw'">
+            <h2>Game Over!</h2>
+            <span>You killed the monster but you're dead too...</span>
+            <span>You can continue to play but you will come back to level 1.</span>
+            <button @click="reset">Try Again</button>
+        </div>
+        <div v-else-if="winner === 'player'">
+            <h2>Fight Over!</h2>
+            <span>You won, congratulations !</span>
+            <span>Player exp +25</span>
+            <img v-if="playerLevelUp" src="./assets/level.png" alt="level up" />
+            <button @click="playerEvolution">Continue</button>
+        </div>
+    </section>
+    <section id="controls">
+        <button @click="attackMonster">
+            <img :src="characters[player.characterNb].weapon" alt="">
+            ATTACK
+        </button>
+        <button :disabled="mayUseSpecialAttack" @click="specialAttackMonster">
+            <span class="remaining-count">{{ remainingSpecialAttacks }}</span>
+            <img src="./assets/meteor.png" alt="">
+            SPECIAL ATTACK
+        </button>
+        <button :disabled="mayUseHeal" @click="healPlayer">
+            <span class="remaining-count">{{ remainingHeals }}</span>
+            <img src="./assets/potion.png" alt="">
+            HEAL
+        </button>
+        <button @click="surrender">
+            <img src="./assets/peace.png" alt="surrender flag">
+            SURRENDER
+        </button>
+    </section>
+<!--    <section id="log" class="container">
+        <h2>Battle Log</h2>
+        <ul></ul>
+    </section>-->
+</div>
+</body>
+</html>

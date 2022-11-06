@@ -36,32 +36,41 @@
     </section>
     <section id="characters">
         <div id="monster" class="container">
-            <img :src="getMonster.avatar" alt="monster avatar">
-            <span>{{ getMonster.name }}</span>
-            <div class="healthbar">
-                <div class="healthbar__value" :style="monsterHealthBarStyles"></div>
+            <div class="visual">
+                <img :src="getMonster.avatar" alt="monster avatar">
+                <span>{{ getMonster.name }}</span>
             </div>
-            <div class="infos">
-                <span>Level {{ monster.level }}</span>
-                <span>{{ monsterHealth }} / {{ monsterMaxHealth }}</span>
+            <div class="stats">
+                <div class="healthbar">
+                    <div class="healthbar__value" :style="monsterHealthBarStyles"></div>
+                </div>
+                <div class="infos">
+                    <span>Level {{ monster.level }}</span>
+                    <span>{{ monsterHealth }} / {{ monsterMaxHealth }}</span>
+                </div>
             </div>
+
         </div>
         <div id="player" class="container">
-            <img :src="characters[player.characterNb].avatar" :alt="characters[player.characterNb].avatarAlt">
-            <span>{{ player.name }}</span>
-            <div class="expbar">
-                <div class="expbar__value" :style="playerExpBarStyles"></div>
+            <div class="visual">
+                <img :src="characters[player.characterNb].avatar" :alt="characters[player.characterNb].avatarAlt">
+                <span>{{ player.name }}</span>
             </div>
-            <div class="infos">
-                <span>Exp. {{ player.exp }}</span>
-                <span>100</span>
-            </div>
-            <div class="healthbar">
-                <div class="healthbar__value" :style="playerHealthBarStyles"></div>
-            </div>
-            <div class="infos">
-                <span>Level {{ player.level }}</span>
-                <span>{{ playerHealth }} / {{ playerMaxHealth }}</span>
+            <div class="stats">
+                <div class="expbar">
+                    <div class="expbar__value" :style="playerExpBarStyles"></div>
+                </div>
+                <div class="infos">
+                    <span>Exp. {{ player.exp }}</span>
+                    <span>100</span>
+                </div>
+                <div class="healthbar">
+                    <div class="healthbar__value" :style="playerHealthBarStyles"></div>
+                </div>
+                <div class="infos">
+                    <span>Level {{ player.level }}</span>
+                    <span>{{ playerHealth }} / {{ playerMaxHealth }}</span>
+                </div>
             </div>
         </div>
     </section>

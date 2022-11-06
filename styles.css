@@ -103,6 +103,21 @@ header {
   color: #cccccc;
 }
 
+#monster .visual,
+#monster .stats,
+#player .visual,
+#player .stats {
+  width: 100%;
+}
+
+#monster .visual,
+#player .visual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #monster img,
 #player img {
   width: 7rem;
@@ -225,6 +240,13 @@ button img {
     align-items: center;
   }
 
+  #monster,
+  #player {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.8rem;
+  }
+
   #monster img,
   #player img {
     width: 5rem;
@@ -233,7 +255,13 @@ button img {
   }
 
   .healthbar {
-    height: 1.6rem;
+    height: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  .expbar {
+    height: 0.6rem;
+    margin: 0.5rem 0;
   }
 
   #controls {

@@ -203,6 +203,44 @@ button img {
   margin-bottom: 0.4rem;
 }
 
+@media (max-width: 700px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  #config fieldset {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+
+  #config fieldset input {
+    width: 100%;
+  }
+
+  #characters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #monster img,
+  #player img {
+    width: 5rem;
+    height: 5rem;
+    margin-top: 0.5rem;
+  }
+
+  .healthbar {
+    height: 1.6rem;
+  }
+
+  #controls {
+    flex-wrap: wrap;
+  }
+}
+
 #log {
   position: absolute;
   left: 0;

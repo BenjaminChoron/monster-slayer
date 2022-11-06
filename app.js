@@ -155,6 +155,7 @@ const app = Vue.createApp({
             this.playerHealth = 100;
             this.playerMaxHealth = 100;
             this.player.level = 1;
+            this.player.exp = 0;
             this.monsterHealth = 100;
             this.monsterMaxHealth = 100;
             this.winner = null;
